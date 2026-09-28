@@ -1,14 +1,30 @@
-# Ibrahim Samir
+<div align="center">
 
-### Founder & Systems Architect @ Ainux
+<img
+  src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=34&duration=2500&pause=900&color=00C9A7&center=true&vCenter=true&multiline=true&repeat=true&width=900&height=120&lines=Ibrahim+Samir;Founder+%26+Systems+Architect+%40+Ainux"
+  alt="Ibrahim Samir — Founder and Systems Architect at Ainux"
+/>
 
-**Sovereign Software · Self-Hosted Infrastructure · AI-Orchestrated Engineering**
+### Sovereign Software · Self-Hosted Infrastructure · AI-Orchestrated Engineering
 
-I build complex software systems from zero — combining systems architecture, protocol research, product design, AI-assisted implementation, integration, and real-world validation.
+</div>
 
-I use AI extensively as an engineering multiplier: research, exploration, implementation, debugging, testing, and iteration are heavily AI-assisted, while I remain responsible for the architecture, system decomposition, technical decisions, validation strategy, and product direction.
+<br />
 
-My work is organized under **Ainux** — a family of independently developed software products and infrastructure projects.
+I build complex software systems from zero — combining **systems architecture, protocol research, product design, AI-assisted implementation, integration, and real-world validation**.
+
+I use AI extensively as an engineering multiplier: research, exploration, implementation, debugging, testing, and iteration are heavily AI-assisted, while I remain responsible for:
+
+- System architecture and decomposition
+- Protocol and infrastructure decisions
+- Security boundaries
+- Technical direction
+- Validation strategy
+- Integration between components
+- Product direction
+- Final technical judgment
+
+My work is organized under **Ainux** — a family of independently developed software products, infrastructure systems, and technical research projects.
 
 > **Different products. Different architectures. One broader thesis: build systems that people and organizations can control and own.**
 
@@ -16,22 +32,42 @@ My work is organized under **Ainux** — a family of independently developed sof
 
 # 🧭 Ainux
 
-Ainux is **not one monolithic application** and the products do not currently share one universal backend or database.
+**Ainux is not one monolithic application**, and its products do not currently share one universal backend or database.
 
-Each product is independently designed and deployed according to its domain.
+Each product is independently designed, engineered, and deployed according to the requirements of its domain.
 
-Some are SaaS systems.
+The ecosystem includes:
 
-Some are self-hosted infrastructure.
+- SaaS platforms
+- Self-hosted infrastructure
+- Open-source community projects
+- Browser-only client-side software
+- Cryptographic and multi-chain systems
+- Independent research and development initiatives
 
-Some are open-source community projects.
+Despite their different architectures, the products share one broader direction:
 
-Some are browser-only client-side software.
+<div align="center">
 
-Some are separate R&D initiatives.
+<img
+  src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=19&duration=2800&pause=1100&color=00C9A7&center=true&vCenter=true&repeat=true&width=850&height=50&lines=Digital+sovereignty.;Infrastructure+control.;Independent+software+ownership."
+  alt="Ainux direction"
+/>
 
-The common direction is **digital sovereignty, infrastructure control, and independent software ownership**.
+</div>
 
+Ainux develops systems intended to give people and organizations greater control over their:
+
+- Software
+- Data
+- Infrastructure
+- Digital assets
+- Operational workflows
+- Technical independence
+
+Ainux is **not a conventional software agency**. It is a growing ecosystem of independently built products and proprietary infrastructure organized around a shared technical and strategic direction.
+
+> **Build infrastructure people can control. Build systems organizations can own. Engineer independence instead of dependency.**
 ---
 # 🔐 AinuxVault
 
