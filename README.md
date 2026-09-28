@@ -33,278 +33,138 @@ Some are separate R&D initiatives.
 The common direction is **digital sovereignty, infrastructure control, and independent software ownership**.
 
 ---
-
 # 🔐 AinuxVault
 
 ## Self-Hosted Multi-Chain Digital Asset Infrastructure
 
-**AinuxVault is currently the deepest technical system I have built under Ainux.**
+**AinuxVault is a proprietary infrastructure platform for organizations that need direct control over digital assets, wallet operations, transaction policies, and cryptographic execution.**
 
-It is designed as self-hosted infrastructure for organizations that need control over wallet operations, cryptographic execution, digital assets, transaction policies, and sensitive infrastructure without placing the entire control plane inside a third-party hosted wallet platform.
+Instead of placing the entire wallet control plane inside a third-party hosted platform, AinuxVault is designed for self-hosted and organization-controlled deployment.
 
-The platform is built around a **Rust cryptographic core** and a **Go application/orchestration layer**.
+The system combines:
+
+- A **Rust cryptographic core**
+- A **Go application and orchestration layer**
+- Browser/device-side cryptographic participation through **Rust and WebAssembly**
+- A multi-tenant operational model for organizations, teams, and applications
 
 ---
 
-## 🗄️ Account → Vault → Wallet Architecture
+## Organizational Vault Architecture
 
-AinuxVault is organized around a hierarchical asset-management model:
+AinuxVault uses a hierarchical structure:
 
 ```text
 Account
-│
-├── Vault A
-│   ├── Wallet — Ethereum / EVM
-│   ├── Wallet — Bitcoin
-│   ├── Wallet — Solana
-│   └── Wallet — Sui
-│
-├── Vault B
-│   ├── Wallet — EVM
-│   ├── Wallet — Bitcoin
-│   └── Wallet — Solana
-│
-└── Vault C
-    ├── Wallet — Aptos
-    └── Wallet — EVM
+└── Vaults
+    └── Multi-Chain Wallets
 ```
 
-A single account can create **multiple vaults**.
+An account can operate multiple isolated vaults, and each vault can contain wallets across different blockchain networks.
 
-Each vault can contain **multiple wallets across different blockchain networks**, with the appropriate assets, permissions, policies, transaction workflows, and authorization boundaries.
+A vault acts as an organizational and authorization boundary for:
 
-This turns the vault into more than a wallet container:
+- Digital assets
+- Wallet permissions
+- Transaction policies
+- Approval workflows
+- Team access
+- Application integrations
 
-> **A vault is an organizational and authorization boundary for digital assets and transactions.**
-
----
-
-## 🏢 Multi-Tenant Infrastructure
-
-AinuxVault is designed for organizations rather than only individual wallets.
-
-The platform includes:
-
-* Multi-tenant architecture
-* Multiple vaults per account
-* Multiple wallets per vault
-* Multi-asset management
-* Role and permission systems
-* Transaction policies
-* Approval workflows
-* Developer APIs
-* SDK infrastructure
-* Gas management
-* Audit-oriented operational records
-* Self-hosted / on-premise deployment
-
-The intention is to allow organizations to model their own operational structure instead of treating every blockchain account as an isolated product.
+This allows organizations to model real operational structures rather than treating each blockchain wallet as an isolated product.
 
 ---
 
-# 🔬 Cryptographic Core
+## Core Capabilities
 
-The cryptographic foundation is implemented primarily in **Rust**.
-
-The application and orchestration layers are implemented in **Go**.
-
-Current cryptographic coverage spans **4 major cryptographic domains**.
-
-### 1. Threshold ECDSA — secp256k1
-
-**CGGMP24 / CMP-style threshold signing**
-
-Used for EVM-compatible ecosystems and other ECDSA-based transaction flows.
-
-The implementation includes distributed signing ceremonies, abort identification mechanisms, and zero-knowledge-proof-based protocol components where applicable.
-
-### 2. FROST — Ed25519
-
-**Flexible Round-Optimized Schnorr Threshold Signatures**
-
-Used for:
-
-* Solana
-* Native SOL
-* SPL assets
-* Move ecosystem integrations where Ed25519 signing is applicable
-
-### 3. FROST / P-256 — secp256r1
-
-Designed around environments such as:
-
-* WebAuthn
-* Passkeys
-* Hardware-backed authentication
-* Native biometric authentication environments
-
-The goal is to allow threshold-controlled signing workflows without forcing users into traditional seed-phrase-based browser wallet UX.
-
-### 4. BIP-340 Schnorr
-
-Used for Bitcoin Taproot key-path spending.
-
-This includes:
-
-* Schnorr signatures
-* Taproot
-* Native key-path transaction flows
-* Threshold-assisted Bitcoin spending
+- Multi-tenant architecture
+- Multiple vaults per account
+- Multiple wallets per vault
+- Multi-chain and multi-asset support
+- Role-based permissions
+- Programmable transaction policies
+- Approval workflows
+- Developer APIs and SDK infrastructure
+- Webhooks and operational events
+- Gas management
+- Audit-oriented records
+- Self-hosted and on-premise deployment architecture
 
 ---
 
-# 🌐 Browser-Side Cryptographic Execution
+## Cryptographic Infrastructure
 
-Supported client-side cryptographic workflows use:
+The cryptographic engine is implemented primarily in **Rust** and currently spans **four cryptographic domains** required by different blockchain and authentication ecosystems.
 
-* Rust
-* WebAssembly
-* Dedicated Web Workers
+Supported workflows include:
 
-The architecture is designed so that client key-share operations can remain within the user's browser or device during supported signing workflows.
+- Distributed key generation
+- 2-of-3 threshold signing
+- ECDSA and Schnorr-based blockchain environments
+- Ed25519-based ecosystems
+- P-256 authentication environments
+- Bitcoin Taproot transaction flows
+- Browser/device-side key-share participation through WebAssembly
 
-The fundamental threshold property is:
-
-> **A single participating signer does not possess enough key material to create a valid signature unilaterally.**
-
-The distributed signing system is therefore designed around cooperation between multiple authorized parties rather than a single central private key.
-
----
-
-# 🌍 Native Multi-Chain Execution
-
-AinuxVault is not only a cryptographic signer.
-
-The platform also contains native transaction-building and execution logic for different blockchain models.
-
-## EVM
-
-Current engineering coverage includes:
-
-* Ethereum
-* Arbitrum
-* Optimism
-* Base
-* Polygon
-* BNB Smart Chain
-* Avalanche
-* Sepolia and related test environments
-
-Capabilities include:
-
-* EIP-1559
-* `maxFeePerGas`
-* `maxPriorityFeePerGas`
-* Nonce reconciliation
-* Native transfers
-* Smart-contract interaction
-* Integer-safe asset calculations
-* Multi-asset transaction execution
+The architecture is designed so that no single participating signer holds enough key material to create a valid signature independently.
 
 ---
 
-## Bitcoin
+## Multi-Chain Engineering
 
-Current engineering coverage includes:
+Current engineering coverage spans approximately **11 blockchain networks and environments**, including:
 
-* Legacy / SegWit transaction flows
-* Taproot
-* `bc1p`
-* `tb1p`
-* UTXO management
-* Fee-aware transaction construction
-* Algorithmic UTXO selection
-* Dust-aware coin selection
-* BIP-340 Schnorr signing
+- EVM-compatible ecosystems
+- Bitcoin
+- Solana
+- Sui
+- Aptos
+
+The platform includes native transaction-building and execution logic for different blockchain models rather than operating only as an isolated signing engine.
 
 ---
 
-## Solana
+## Current Progress
 
-Current engineering coverage includes:
+AinuxVault is an operational engineering system, not a conceptual proposal.
 
-* Native SOL
-* SPL Tokens
-* Associated Token Account derivation
-* Rent-exemption handling
-* Native transaction construction
-* Base58 transaction/signature handling
+Current milestones include:
 
----
-
-## Move Ecosystem
-
-Current engineering coverage includes:
-
-### Sui
-
-* Programmable Transaction Blocks
-* BCS serialization
-* Native transaction construction
-
-### Aptos
-
-* BCS RawTransaction encoding
-* Deterministic payload construction
-* Transaction verification
+- Rust cryptographic engine
+- Go multi-tenant orchestration infrastructure
+- Rust/WASM client-side execution
+- 2-of-3 threshold key generation and signing
+- Account → Vault → Wallet architecture
+- Permissions and transaction policies
+- Approval workflows
+- API and SDK infrastructure
+- Gas-management infrastructure
+- End-to-end signing and transaction execution validated across **five blockchain network environments, including Solana**
 
 ---
 
-# 🧮 Precision-Safe Asset Arithmetic
+## Current Stage
 
-The platform avoids floating-point arithmetic for digital-asset calculations.
+AinuxVault is moving from deep technical development toward:
 
-Core utilities use integer/string-safe representations for:
+- Independent security review
+- Threat-model validation
+- Production hardening
+- SDK and developer tooling maturation
+- Documentation
+- Design-partner validation
+- Strategic partnerships
+- Commercialization
 
-* `parseUnits`
-* `formatUnits`
-* Token amounts
-* Fee calculations
-* High-decimal assets
-
-The implementation is designed to preserve exact values across assets with very high decimal precision.
-
----
-
-# 📊 AinuxVault — Engineering Milestones
-
-Current engineering scope includes:
-
-* **4 cryptographic domains**
-* **11 blockchain networks / environments**
-* **2-of-3 threshold key generation**
-* **2-of-3 threshold signing**
-* Rust cryptographic engine
-* Go application/orchestration infrastructure
-* Rust/WASM client execution
-* Multi-tenant vault architecture
-* Multiple vaults per account
-* Multiple wallets per vault
-* Multi-asset support
-* Permissions
-* Transaction policies
-* Approval workflows
-* SDK/API layer
-* Gas management
-* Self-hosted deployment architecture
-
-The engine has been validated through end-to-end signing and execution workflows across **5 live blockchain networks / environments**.
-
-The system is currently moving from deep technical development toward:
-
-* Independent security review
-* Production hardening
-* Developer tooling
-* Documentation
-* SDK maturation
-* Design-partner validation
-* Strategic partnerships
-* Commercialization
-
-A working cryptographic demonstration does not by itself constitute production security certification. Independent review, threat-model validation, operational controls, and hardening remain part of the production path.
+> A working cryptographic implementation does not by itself constitute production security certification. Independent review, operational controls, and further hardening remain part of the production path.
 
 ---
 
+## Source Availability
+
+AinuxVault is currently **proprietary and closed-source**.
+
+Technical demonstrations, architecture discussions, and limited evaluation materials may be provided to qualified partners, investors, and security reviewers under appropriate evaluation and confidentiality terms.
 # 🍽️ Ainux OS
 
 ## Multi-Tenant Restaurant Operating System
